@@ -1,50 +1,32 @@
-# MicronutrientBot
-CS3IP 
 # MicronutrientBot – Setup Guide
 
-This chatbot project uses Python (Flask) for the backend and Dialogflow Essentials for natural language processing. It allows users to ask nutrition-related questions and receive food suggestions based on symptoms, nutrients, and their personal profile.
 
-Step 1: Set up Dialogflow Agent
+## Prerequisites
+- Python 3.8+
+- [Ngrok](https://ngrok.com/) (for local tunneling)
+- Dialogflow Essentials account
 
-1. Unzip the Dialogflow folder "MicronutrientBot-sub" in this project. Inside you’ll find a ZIP file of the agent
+## Setup Instructions
 
- 2. Go to [Dialogflow Essentials Console]
-    
-4. Create a new agent (or use an existing one), then:
+### 1. Import Dialogflow Agent
+1. Unzip the provided `MicronutrientBot_Agent_sub` to access the Dialogflow agent files
+2. Navigate to the [Dialogflow Console](https://dialogflow.cloud.google.com/)
+3. Create a new agent (or use an existing one)
+4. Click the  Settings icon → Export & Import → Restore from ZIP
+5. Upload the agent ZIP file to gain access to the agent 
 
-- Click the Settings icon next to the agent name.
-  
-- Go to Export and Import tab.
-  
-- Select Restore from ZIP, and upload the agent ZIP file.
+### 2. Configure Flask Backend
+1. Unzip the Flask webhook code 
+2. Install flask, Ngrok and Python 3.8+
 
-This will import all intents, entities, and conversation flows into your agent.
+ 3. Run Locally with Ngrok
+1. Start Ngrok (to expose your local server) by running: ngrok http 5000
+   Copy the HTTPS URL that appears (e.g., https://abc123.ngrok.io)
+2. In Dialogflow:
+   - Go to Fulfillment → Enable Webhook
+   - Paste your Ngrok URL (e.g., https://abc123.ngrok.io/webhook)
+3. Run the Flask app by executing: python app.py
 
-
-Step 2: Set up ngrok
-
-This project runs locally, so you’ll need ngrok to expose the Flask server to the internet so Dialogflow can send requests.
-
-Download ngrok 
-
-
-2. In your terminal, run:
-bash
-ngrok http 5000
-Copy the HTTPS link that ngrok gives you (e.g., https://abc123.ngrok.io)
-
-
-3
-	In Dialogflow:
-	•	Go to the Fulfillment tab
-	•	Paste the ngrok HTTPS link into the Webhook URL field:
-
-
-4. run app.py  
-
-python app.py
-
-
-now u should be able to run the Project in Localhost:8080
-
+## Running the bot
+1. Use the Dialogflow test console or the integrated web interface by typing in broswer local host:8080
 
